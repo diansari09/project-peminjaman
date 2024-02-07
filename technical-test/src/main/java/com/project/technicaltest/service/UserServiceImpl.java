@@ -41,7 +41,10 @@ public class UserServiceImpl implements UsersService{
         newData.setCounter(0);
         newData.setPassword(this.generateCommonLangPassword());
         userRepository.save(newData);
-        return null;
+        return UserResponse.builder()
+                .email(newData.getEmail())
+                .noHp(newData.getNoHp())
+                .ktp(newData.getKtp()).build();
     }
 
     @Override
